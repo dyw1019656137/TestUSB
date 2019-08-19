@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Usb通信</string>
+
+    <!--V7框架核心组件，必选组件-->
+    <string name="core_enable">1</string>
+    <!--测试组件，必选组件-->
+    <string name="testtool_enable">1</string>
+    <!--ejs组件，必选组件-->
+    <string name="ejs_enable">1</string>
+    <string name="ui_enable">1</string>
+    <string-array name="plugin_provider">
+        <item>com.epoint.app.plugin.ApplicationLogic</item>
+        <item>com.epoint.ejs.plugin.ApplicationLogic</item>
+        <item>com.epoint.testtool.plugin.ApplicationLogic</item>
+        <item>com.epoint.ui.plugin.ApplicationLogic</item>
+    </string-array>
+</resources>

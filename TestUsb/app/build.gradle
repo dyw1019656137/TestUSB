@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.epoint.testusb"
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true//解决代码过多打包失败的问题
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            //开启资源压缩，必须开启混淆
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        //增加编译内存
+        javaMaxHeapSize "4g"
+        jumboMode = true
+        preDexLibraries = true
+        maxProcessCount = 4
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    api 'com.epoint.android:ejs:3.2.6.f'
+    api 'com.epoint.android:core:7.3.9.f'
+    api 'com.epoint.android:ui:1.0.7.c'
+    api 'com.epoint.android:testtool:1.1.0@aar'
+}
